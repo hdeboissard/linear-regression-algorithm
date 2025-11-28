@@ -84,9 +84,10 @@ def gradient_descent(x, y, learning_rate, num_iterations):
         b, m = step_gradient(b, m, x, y, learning_rate)
     return b, m
 
-b, m = gradient_descent(X, Y, learning_rate=0.00005, num_iterations = 1000000)
-print('This is b: ', round(b))
-print('This is m: ', round(m))
+# checking the code
+# b, m = gradient_descent(X, Y, learning_rate=0.00005, num_iterations = 1000000)
+# print('This is b: ', round(b))
+# print('This is m: ', round(m))
 
 # graphical section for comparing gradient descent results to actual calculation
 
@@ -139,8 +140,10 @@ def find_line(x, y):
     return m, b
     
 m_real, b_real = find_line(X, Y)
-print('This is the real value of m: ', round(m_real))
-print('This is the real value of b: ', round(b_real))
+
+# more checks to compare against the algorithm
+# print('This is the real value of m: ', round(m_real))
+# print('This is the real value of b: ', round(b_real))
 
 
 def create_list(num_points, exp_base):
@@ -152,7 +155,8 @@ def create_list(num_points, exp_base):
 # defining how many points you are going to tkae and with what exp base
 
 num_points = 9
-exp_base = 5 
+exp_base = 5
+learn_rate = 0.00005 
 
 iterations = create_list(num_points, exp_base)
 
@@ -161,14 +165,10 @@ m_results = []
 
 for i in range(num_points + 1):
     print('Currently on iteration: ', i)
-    b, m = gradient_descent(X, Y, learning_rate=0.00005, num_iterations = iterations[i])
+    b, m = gradient_descent(X, Y, learning_rate=learn_rate, num_iterations = iterations[i])
     b_results.append(float(b))
     m_results.append(float(m))
 
-
-print(b_results)
-print(m_results)
-print(iterations)
 
 # creating values to graph
 
@@ -181,7 +181,7 @@ for i in range(len(X)):
 plt.plot(years, y_predicted, color='red')
 plt.xlabel('Year')
 plt.ylabel('Population')
-plt.title('Population at Different Years with fitted Regression Line')
+plt.title('UK Population at Different Years with fitted Regression Line')
 
 # creating an array to plot the value of m and b
 m_real_plotdata = []
